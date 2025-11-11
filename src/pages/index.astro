@@ -7,11 +7,30 @@ import Logos from "@/components/logos.astro";
 import Layout from "@/layouts/Layout.astro";
 ---
 
-<Layout title="">
+<Layout title="Astro + n8n Chat Example">
   <Container>
     <Hero />
     <Features />
     <Logos />
     <Cta />
+
+    
+
+    <!-- n8n Chat CDN embed -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css"
+      rel="stylesheet"
+    />
+    <script type="module">
+      import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+      createChat({
+        container: '#n8n-chat',           // The div where the chat widget renders
+        webhookUrl: 'https://n8n.konex.click/webhook/ab523615-bb94-446c-94d5-86df36df4ee0/chat', // Replace with your actual n8n webhook URL
+        // Optional settings:
+        title: 'Astro Chat',
+        placeholder: 'Type your message...',
+      });
+    </script>
   </Container>
 </Layout>
