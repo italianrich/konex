@@ -4,39 +4,39 @@ import { Icon } from "astro-icon/components";
 
 const features = [
   {
-    title: "Instant Trip Recommendations",
+    title: "Capture Seller Valuation Leads",
     description:
-      "Your AI assistant can instantly answer questions about destinations, prices, or packages — even outside office hours.",
-    icon: "bx:bxs-plane-alt",
+      "Turn website visitors into potential sellers with intelligent valuation flows that collect contact details and property information automatically.",
+    icon: "bx:bxs-home",
   },
   {
-    title: "Convert More Visitors",
+    title: "Qualify Buyers Automatically",
     description:
-      "Turn website visitors into real leads. The chatbot guides them from curiosity to booking without needing to call or wait.",
+      "Your AI concierge can answer property questions, understand buyer criteria, and guide visitors toward suitable listings instantly.",
     icon: "bx:bxs-conversation",
   },
   {
-    title: "Always Available 24/7",
+    title: "Available 24/7",
     description:
-      "Let clients chat anytime — your AI assistant never sleeps. Perfect for answering questions while you focus on sales.",
+      "Never miss another enquiry outside office hours. The concierge responds instantly, even during evenings, weekends, and holidays.",
     icon: "bx:bxs-time-five",
   },
   {
-    title: "Easy Integration",
+    title: "Easy Website Integration",
     description:
-      "Add the chat widget to your existing website in minutes. Works with any site or CMS — no coding required.",
+      "Add the AI concierge to your existing agency website in minutes. Compatible with modern websites and property platforms.",
     icon: "bx:bxs-bot",
   },
   {
-    title: "Multilingual Support",
+    title: "Multilingual Concierge",
     description:
-      "Serve customers in English, French, Italian, or any language you choose. Great for agencies with international clients.",
+      "Serve international buyers and sellers in English, French, Italian, Spanish, and more — automatically detected and translated.",
     icon: "bx:bxs-flag-alt",
   },
   {
-    title: "Performance Reports",
+    title: "Lead Tracking & Insights",
     description:
-      "Track client interactions and see how many conversations turn into leads — clear proof your AI assistant delivers results.",
+      "Track conversations, valuation requests, and client interactions with clear reporting that proves ROI to your agency.",
     icon: "bx:bxs-bar-chart-alt-2",
   },
 ];
@@ -44,10 +44,13 @@ const features = [
 
 <div class="mt-16 md:mt-0">
   <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Your AI Assistant for Travel Agencies
+    A 24/7 AI Concierge for Modern Estate Agencies
   </h2>
-  <p class="text-lg mt-4 text-slate-600">
-    Engage visitors, answer questions, and sell more trips automatically — all with your custom AI travel agent assistant.
+
+  <p class="text-lg mt-4 text-slate-600 max-w-3xl">
+    Konex Concierge helps estate agencies respond faster, qualify leads
+    automatically, and capture more seller valuation requests — without hiring
+    additional staff.
   </p>
 </div>
 
@@ -58,9 +61,13 @@ const features = [
         <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0">
           <Icon class="text-white" name={item.icon} />
         </div>
+
         <div>
           <h3 class="font-semibold text-lg">{item.title}</h3>
-          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+
+          <p class="text-slate-500 mt-2 leading-relaxed">
+            {item.description}
+          </p>
         </div>
       </div>
     ))
