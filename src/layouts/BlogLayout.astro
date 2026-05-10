@@ -4,46 +4,93 @@ import { getFormattedDate } from "@/utils/all";
 import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
+
+const tags = frontmatter.tags || [];
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={frontmatter.title} description={frontmatter.description}>
   <Container>
-    <div class="mx-auto max-w-[735px] mt-14">
-      <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
-        {frontmatter.category}
+    <article class="mx-auto max-w-[735px] mt-14">
+      <span class="text-slate-500 uppercase tracking-wider text-sm font-medium">
+        {frontmatter.category || "Estate Agency Growth"}
       </span>
+
       <h1
-        class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
+        class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-2 lg:leading-tight">
         {frontmatter.title}
       </h1>
-      <div class="flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap">
-        <span class="text-gray-400">
-          {frontmatter.author}
-        </span>
-        <span class="text-gray-400">•</span>
-        <time class="text-gray-400" datetime={frontmatter.publishDate}>
-          {getFormattedDate(frontmatter.publishDate)}
-        </time>
-        <span class="text-gray-400 hidden md:block">•</span>
-        <div class="w-full md:w-auto flex flex-wrap gap-3">
-          {
-            frontmatter.tags.map((tag) => (
-              <span class="text-sm text-gray-500">#{tag}</span>
-            ))
-          }
-        </div>
+
+      <div class="flex gap-2 mt-4 items-center flex-wrap md:flex-nowrap">
+        {
+          frontmatter.author && (
+            <>
+              <span class="text-gray-400">
+                {frontmatter.author}
+              </span>
+              <span class="text-gray-400">•</span>
+            </>
+          )
+        }
+
+        {
+          frontmatter.publishDate && (
+            <time class="text-gray-400" datetime={frontmatter.publishDate}>
+              {getFormattedDate(frontmatter.publishDate)}
+            </time>
+          )
+        }
+
+        {
+          tags.length > 0 && (
+            <>
+              <span class="text-gray-400 hidden md:block">•</span>
+
+              <div class="w-full md:w-auto flex flex-wrap gap-3">
+                {tags.map((tag) => (
+                  <span class="text-sm text-gray-500">#{tag}</span>
+                ))}
+              </div>
+            </>
+          )
+        }
+      </div>
+    </article>
+
+    <div class="mx-auto prose prose-lg mt-8">
+      <slot />
+    </div>
+
+    <div class="mx-auto max-w-[735px] mt-12 p-6 bg-black rounded-2xl text-center">
+      <h2 class="text-white text-2xl font-semibold">
+        Want to see Konex Concierge in action?
+      </h2>
+
+      <p class="text-slate-400 mt-3">
+        See how an estate agency can capture seller valuation requests,
+        qualify buyers, and respond instantly with a 24/7 AI concierge.
+      </p>
+
+      <div class="mt-5 flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href="/demo"
+          class="bg-white text-black px-5 py-3 rounded-md hover:bg-slate-100 transition">
+          Try the Live Demo
+        </a>
+
+        <a
+          href="/contact"
+          class="border border-slate-600 text-white px-5 py-3 rounded-md hover:bg-slate-900 transition">
+          Book a Walkthrough
+        </a>
       </div>
     </div>
 
-    <div class="mx-auto prose prose-lg mt-6">
-      <slot />
-    </div>
     <div class="text-center mt-8">
       <a
         href="/blog"
-        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
-        >← Back to Blog</a
-      >
+        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition">
+        ← Back to Blog
+      </a>
     </div>
   </Container>
 </Layout>
